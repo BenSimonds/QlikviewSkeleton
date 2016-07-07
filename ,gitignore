@@ -1,0 +1,19 @@
+# Data Files:
+# Rather than excluding the whole directory structure, lets exclude specific file types. This way we can still store notes or other useful data.
+*.qvd
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+
+# QVW files.
+*.qvw
+# Except those with no data.
+!*.nd.qvw
+
+# Log files.
+*.log
+Log.txt
+
+# Temp Files
+*.tmp
