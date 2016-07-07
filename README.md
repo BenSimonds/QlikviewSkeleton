@@ -78,7 +78,7 @@ With that in mind see the gitignore file in the files below.
 
 Whilst Qlik has a command line flag to open a qvw without data, it does not have one that saves the qvw in this state. This means we will have to find a different way to save a reduced qvw. Whilst I generally try and avoid vb script, it does solve this problem - see reduce.vbs for how. The script loops through the App and QVDLoader files, and opens each qvw in turn, then does the following:
 
-* Checks for a corresponding prj folder. If none exists, it asks the user if one should be created, then creates one and saves the qvw to populate it's contents.
+* Checks for a corresponding prj folder. If none exists, it asks the user if one should be created, then creates one and saves the qvw to populate its contents.
 * Drops the data from the qvw and saves a copy with the extension ".nd.qvw".
 * Quits and moves on to the next file.
 
