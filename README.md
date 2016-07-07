@@ -68,6 +68,7 @@ The .gitignore file defines which files should be ignored from verison control, 
 * We don't want to track our actual qvw files.
 * We _do_ want to track our .nd.qvw files with the data removed.
 * We don't want to track any data, this includes our QVD and StaticFiles Folders.
+* We also dont want to track a few other file types (log files, tmp files etc.)
 
 > It's possible we may want to track some data files, perhaps a simple mapping table created as part of the project that is shared by several qvws, or some other simple files. In general though we should avoid tracking data, and if possible store it separately from the application itself in some commonly accessible location.
 
