@@ -75,4 +75,27 @@ With that in mind see the gitignore file in the files below.
 
 ## Procedural Data Reduction:
 
-Whilst Qlik has a command line flag to open a qvw without data, it does not have one that saves the qvw in this state. This means we will have to find a different way to save a reduced qvw. Whilst I generally try and avoid vb script, it does solve this problem - see reduce.vbs for how. The script simply opens a qvw (given by an argument when running the script), drops the data, then saves (with the extension .nd.qvw) and quits. 
+Whilst Qlik has a command line flag to open a qvw without data, it does not have one that saves the qvw in this state. This means we will have to find a different way to save a reduced qvw. Whilst I generally try and avoid vb script, it does solve this problem - see reduce.vbs for how. The script loops through the App and QVDLoader files, and opens each qvw in turn, then does the following:
+
+* Checks for a corresponding prj folder. If none exists, it asks the user if one should be created, then creates one and saves the qvw to populate it's contents.
+* Drops the data from the qvw and saves a copy with the extension ".nd.qvw".
+* Quits and moves on to the next file.
+
+The script thus takes care of two concerns, firstly making sure that prj folders have been genrated for all of our qvw files, and secondly that there is an up-to-date reduced copy.
+
+> Note: In future I'd like to make this step part of a pre-commit hook, so that it can be run automatically before each commit. For now the user must run it themselves.
+
+## Qlikview Features Supported
+
+ Feature | Captured by PRJ | Captured by .nd.qvw  
+ ----- |:-----:| :-----:
+ Load Script | x | x
+ Layout | x | x
+ Variables | ? | ?
+ Field Event Triggers | ? | ?
+ Variable Event Triggers | ? | ?
+ Document Event Triggers | ? | ?
+ 
+ 
+ 
+ 
