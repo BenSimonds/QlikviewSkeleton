@@ -120,7 +120,7 @@ Snippet of load script
 ```
   //Load Global and Local Variables:
   $(Include=..\globals.qvs);
-  $(Include=..\locals.qvs);
+  $(Include=..\locals.qvs); // Overwrites variable set by globals.qvs
 ```
 `Locals.qvs` is then added to gitignore.
 
