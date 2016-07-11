@@ -72,7 +72,31 @@ The .gitignore file defines which files should be ignored from verison control, 
 
 > It's possible we may want to track some data files, perhaps a simple mapping table created as part of the project that is shared by several qvws, or some other simple files. In general though we should avoid tracking data, and if possible store it separately from the application itself in some commonly accessible location.
 
-With that in mind see the gitignore file in the files below.
+See `.gitignore` for the full list of ignored files..
+
+## Local Variables:
+
+A typical problem that might arise when managing a project across different environments is the need to have some local variables. If the location of our data set on one machine  is `C:\Data` and on another is `D:\Data` we want to be able to set this locally without git overriding each location's settings every time we push a commit to the repository. But we also want to have sane defaults for these variables, so that we know how to set them up in the first place. To deal with this I create two .qvs files. A `globals.qvs` and `locals.qvs`. When loaded in order (globals then locals), they can be used to set defaults for any qvw that needs them. By default locals.qvs can be left empty, variables only need overwriting when they should differ from the global value.
+
+In the below example, use this to set a variable to hide some developer sheets from the end user. The `vShowSummarySheet` variable on the other hand will be left at the default value.
+
+globals.qvs
+```
+  let vShowSummarySheet  = 1; // Show/Hide condition for summary sheet.
+  let vShowDevSheets = 0; // Dont show dev sheets by default.
+```
+
+locals.qvs
+```
+  let vShowDevSheets = 1; //Show dev sheets on this repo. 
+```
+Snippet of load script
+```
+  //Load Global and Local Variables:
+  $(Include=..\globals.qvs);
+  $(Include=..\locals.qvs); // Overwrites variable set by globals.qvs
+```
+`Locals.qvs` is then added to gitignore.
 
 ## Data Reduction:
 
@@ -99,30 +123,6 @@ The former task is more important than the latter, as you may wish to do the lat
   * Opens that qvw file to cause QlikView to apply the -prj folder, saves and closes.
 
 Doing this without worrying about reloading saves having to worry about dependencies between files. Reloads can then be done whichever way the user chooses.
-
-## Local Variables:
-
-A typical problem that might arise when managing a project across different environments is the need to have some local variables. If the location of our data set on one machine  is `C:\Data` and on another is `D:\Data` we want to be able to set this locally without git overriding each location's settings every time we push a commit to the repository. But we also want to have sane defaults for these variables, so that we know how to set them up in the first place. To deal with this I create two .qvs files. A `globals.qvs` and `locals.qvs`. When loaded in order (globals then locals), they can be used to set defaults for any qvw that needs them. By default locals.qvs can be left empty, variables only need overwriting when they should differ from the global value.
-
-In the below example, use this to set a variable to hide some developer sheets from the end user. The `vShowSummarySheet` variable on the other hand will be left at the default value.
-
-globals.qvs
-```
-  let vShowSummarySheet  = 1; // Show/Hide condition for summary sheet.
-  let vShowDevSheets = 0; // Dont show dev sheets by default.
-```
-
-locals.qvs
-```
-  let vShowDevSheets = 1; //Show dev sheets on this repo. 
-```
-Snippet of load script
-```
-  //Load Global and Local Variables:
-  $(Include=..\globals.qvs);
-  $(Include=..\locals.qvs); // Overwrites variable set by globals.qvs
-```
-`Locals.qvs` is then added to gitignore.
 
 ## Qlikview Features Supported
 
