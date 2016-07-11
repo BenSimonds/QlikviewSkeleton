@@ -93,7 +93,7 @@ Once we've made commits to our project and pushed them to a repository, and then
   * Creating MyApp.qvw from MyApp.nd.qvw and refreshing it from the prj folder (though it should be up to date anyway) and re-saving it.
   * Reloading MyApp.qvw
 
-The former task is more important than the latter, as you may wish to do the latter in several different ways depending on the application (running a chain of tasks in publisher, batch file, manually). The first task is carried out by `build.vbs`. It does the following steps in a very similar way to reduce.vbs:
+The former task is more important than the latter, as you may wish to do the latter in several different ways depending on the application (running a chain of tasks in publisher, batch file, manually). The first task is carried out by `build.vbs`. It performs the following steps in a very similar way to `reduce.vbs`:
 
   * Loops through App and QVDLoader and for each `.nd.qvw` file it finds, copies it to create a `.qvw` file.
   * Opens that qvw file to cause QlikView to apply the -prj folder, saves and closes.
