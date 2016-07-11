@@ -104,11 +104,11 @@ Doing this without worrying about reloading saves having to worry about dependen
 
 A typical problem that might arise when managing a project across different environments is the need to have some local variables. If the location of our data set on one machine  is `C:\Data` and on another is `D:\Data` we want to be able to set this locally without git overriding each location's settings every time we push a commit to the repository. But we also want to have sane defaults for these variables, so that we know how to set them up in the first place. To deal with this I create two .qvs files. A `globals.qvs` and `locals.qvs`. When loaded in order (globals then locals), they can be used to set defaults for any qvw that needs them. By default locals.qvs can be left empty, variables only need overwriting when they should differ from the global value.
 
-In the below example, use this to set a variable to hide some developer sheets from the end user. The `vDataLocation` variable on the other hand will be left at the default value.
+In the below example, use this to set a variable to hide some developer sheets from the end user. The `vShowSummarySheet` variable on the other hand will be left at the default value.
 
 globals.qvs
 ```
-  let vDataLocation  = 'D:\Data'; // Data folder.
+  let vShowSummarySheet  = 1; // Show/Hide condition for summary sheet.
   let vShowDevSheets = 0; // Dont show dev sheets by default.
 ```
 
