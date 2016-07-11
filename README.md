@@ -108,13 +108,13 @@ In the below example, use this to set a variable to hide some developer sheets f
 
 globals.qvs
 ```
-  Set vDataLocation  = 'D:\Data'; // Data folder.
-  Set vShowDevSheets = 0; // Dont show dev sheets by default.
+  let vDataLocation  = 'D:\Data'; // Data folder.
+  let vShowDevSheets = 0; // Dont show dev sheets by default.
 ```
 
 locals.qvs
 ```
-  Set vShowDevSheets = 1; //Show dev sheets on this repo. 
+  let vShowDevSheets = 1; //Show dev sheets on this repo. 
 ```
 Snippet of load script
 ```
