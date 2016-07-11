@@ -74,7 +74,7 @@ The .gitignore file defines which files should be ignored from verison control, 
 
 With that in mind see the gitignore file in the files below.
 
-## Procedural Data Reduction:
+## Data Reduction:
 
 Whilst Qlik has a command line flag to open a qvw without data, it does not have one that saves the qvw in this state. This means we will have to find a different way to save a reduced qvw. Whilst I generally try and avoid vb script, it does solve this problem - see reduce.vbs for how. The script loops through the App and QVDLoader files, and opens each qvw in turn, then does the following:
 
@@ -85,6 +85,44 @@ Whilst Qlik has a command line flag to open a qvw without data, it does not have
 The script thus takes care of two concerns, firstly making sure that prj folders have been genrated for all of our qvw files, and secondly that there is an up-to-date reduced copy.
 
 > Note: In future I'd like to make this step part of a pre-commit hook, so that it can be run automatically before each commit. For now the user must run it themselves.
+
+## QVW Generation
+
+Once we've made commits to our project and pushed them to a repository, and then cloned that repository somewhere else, we also need to run the data reduction process in reverse. Since none of our actual qvw files are copied across (just stripped .nd.qvw files). We need to re-generate them when we clone the repository. This can be split into to parts:
+  
+  * Creating MyApp.qvw from MyApp.nd.qvw and refreshing it from the prj folder (though it should be up to date anyway) and re-saving it.
+  * Reloading MyApp.qvw
+
+The former task is more important than the latter, as you may wish to do the latter in several different ways depending on the application (running a chain of tasks in publisher, batch file, manually). The first task is carried out by build.vbs. It does the following steps in a very similar way to reduce.vbs:
+
+  * Loops through App and QVDLoader and for each ".nd.qvw" file it finds, copies it to create a ".qvw" file.
+  * Opens that qvw file to cause QlikView to apply the -prj folder, saves and closes.
+
+Doing this without worrying about reloading saves having to worry about dependencies between files. Reloads can then be done whichever way the user chooses.
+
+## Local Variables:
+
+A typical problem that might arise when managing a project across different environments is the need to have some local variables. If the location of our data set on one machine  is C:\Data and on another is D:\Data we want to be able to set this locally without git overriding each locations settings every time we push a commit to the repository. But we also want to have sane defaults for these variables, so that we know how to set them up in the first place. To deal with this I create two .qvs files. A `globals.qvs` and `locals.qvs`. When loaded in order (globals then locals), they can be used to set defaults for any qvw that needs them. By default locals.qvs can be left empty, variables only need overwriting when they should differ from the global value.
+
+In the below example, use this to set a variable to hide some developer sheets from the end user. The `vDataLocation` variable on the other hand will be left at the default value.
+
+globals.qvs
+```
+  Set vDataLocation  = 'D:\Data'; // Data folder.
+  Set vShowDevSheets = 0; // Dont show dev sheets by default.
+```
+
+locals.qvs
+```
+  Set vShowDevSheets = 1; //Show dev sheets on this repo. 
+```
+Snippet of load script
+```
+  //Load Global and Local Variables:
+  $(Include=..\globals.qvs);
+  $(Include=..\locals.qvs);
+```
+`Locals.qvs` is then added to gitignore.
 
 ## Qlikview Features Supported
 
