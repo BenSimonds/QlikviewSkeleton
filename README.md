@@ -112,7 +112,7 @@ The script thus takes care of two concerns, firstly making sure that prj folders
 
 ## QVW Generation
 
-Once we've made commits to our project and pushed them to a repository, and then cloned that repository somewhere else, we also need to run the data reduction process in reverse. Since none of our actual qvw files are copied across (just stripped .nd.qvw files). We need to re-generate them when we clone the repository. This can be split into to parts:
+Once we've made commits to our project and pushed them to a repository, and then cloned that repository somewhere else, we also need to run the data reduction process in reverse. Since none of our actual qvw files are copied across (just stripped .nd.qvw files). We need to re-generate them when we clone the repository. This can be split into two parts:
   
   * Creating MyApp.qvw from MyApp.nd.qvw and refreshing it from the prj folder (though it should be up to date anyway) and re-saving it.
   * Reloading MyApp.qvw
