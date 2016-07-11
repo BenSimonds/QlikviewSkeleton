@@ -76,10 +76,10 @@ With that in mind see the gitignore file in the files below.
 
 ## Data Reduction:
 
-Whilst Qlik has a command line flag to open a qvw without data, it does not have one that saves the qvw in this state. This means we will have to find a different way to save a reduced qvw. Whilst I generally try and avoid vb script, it does solve this problem - see reduce.vbs for how. The script loops through the App and QVDLoader files, and opens each qvw in turn, then does the following:
+Whilst Qlik has a command line flag to open a qvw without data, it does not have one that saves the qvw in this state. This means we will have to find a different way to save a reduced qvw. Whilst I generally try and avoid vb script, it does solve this problem - see `reduce.vbs` for how. The script loops through the App and QVDLoader files, and opens each qvw in turn, then does the following:
 
 * Checks for a corresponding prj folder. If none exists, it asks the user if one should be created, then creates one and saves the qvw to populate its contents.
-* Drops the data from the qvw and saves a copy with the extension ".nd.qvw".
+* Drops the data from the qvw and saves a copy with the extension `.nd.qvw`.
 * Quits and moves on to the next file.
 
 The script thus takes care of two concerns, firstly making sure that prj folders have been genrated for all of our qvw files, and secondly that there is an up-to-date reduced copy.
@@ -93,9 +93,9 @@ Once we've made commits to our project and pushed them to a repository, and then
   * Creating MyApp.qvw from MyApp.nd.qvw and refreshing it from the prj folder (though it should be up to date anyway) and re-saving it.
   * Reloading MyApp.qvw
 
-The former task is more important than the latter, as you may wish to do the latter in several different ways depending on the application (running a chain of tasks in publisher, batch file, manually). The first task is carried out by build.vbs. It does the following steps in a very similar way to reduce.vbs:
+The former task is more important than the latter, as you may wish to do the latter in several different ways depending on the application (running a chain of tasks in publisher, batch file, manually). The first task is carried out by `build.vbs`. It does the following steps in a very similar way to reduce.vbs:
 
-  * Loops through App and QVDLoader and for each ".nd.qvw" file it finds, copies it to create a ".qvw" file.
+  * Loops through App and QVDLoader and for each `.nd.qvw` file it finds, copies it to create a `.qvw` file.
   * Opens that qvw file to cause QlikView to apply the -prj folder, saves and closes.
 
 Doing this without worrying about reloading saves having to worry about dependencies between files. Reloads can then be done whichever way the user chooses.
