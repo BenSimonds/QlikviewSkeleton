@@ -11,6 +11,9 @@
 # Except those with no data.
 !*.nd.qvw
 
+# Local Variables
+locals.qvs
+
 # Log files.
 *.log
 Log.txt
