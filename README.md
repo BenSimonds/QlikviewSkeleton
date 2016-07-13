@@ -135,7 +135,7 @@ Doing this without worrying about reloading saves having to worry about dependen
  Variable Event Triggers | Yes | Yes | Stored in AllProperties.xml
  Document Event Triggers | Yes | Yes | Stored in DocProperties.xml
  Selection State | *No*  | *No* | Not stored in prj, .nd.qvw loses data (and therefore selections within).
- Bookmarks | Y | Y | Stored in DocInternals.xml within <Bookmarks></Bookmarks> tags.
+ Bookmarks | Yes | Yes | Stored in DocInternals.xml within <Bookmarks></Bookmarks> tags.
  
 
  
