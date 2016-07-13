@@ -126,16 +126,16 @@ Doing this without worrying about reloading saves having to worry about dependen
 
 ## Qlikview Features Supported
 
- Feature | Captured by PRJ | Captured by .nd.qvw | Comments
- ----- |:-----:| :-----:|:-----
- Load Script | Yes | Yes |
- Layout | Yes | Yes |
- Variables | Yes | Yes |
- Field Event Triggers | Yes | Yes | Stored in AllProperties.xml
- Variable Event Triggers | Yes | Yes | Stored in AllProperties.xml
- Document Event Triggers | Yes | Yes | Stored in DocProperties.xml
- Selection State | *No*  | *No* | Not stored in prj, .nd.qvw loses data (and therefore selections within).
- Bookmarks | Yes | Yes | Stored in DocInternals.xml within <Bookmarks></Bookmarks> tags.
+Feature | Captured by PRJ | Captured by .nd.qvw | Comments
+----- |:-----:| :-----:|:-----
+Load Script | Yes | Yes |
+Layout | Yes | Yes |
+Variables | Yes | Yes |
+Bookmarks | Yes | Yes | Stored in DocInternals.xml within <Bookmarks></Bookmarks> tags.
+Field Event Triggers | Yes | Yes | Stored in AllProperties.xml
+Variable Event Triggers | Yes | Yes | Stored in AllProperties.xml
+Document Event Triggers | Yes | Yes | Stored in DocProperties.xml
+Selection State | *No*  | *No* | Not stored in prj, .nd.qvw loses data (and therefore selections within).
  
 
  
