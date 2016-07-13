@@ -131,7 +131,7 @@ Feature | Captured by PRJ | Captured by .nd.qvw | Comments
 Load Script | Yes | Yes |
 Layout | Yes | Yes |
 Variables | Yes | Yes |
-Bookmarks | Yes | Yes | Stored in DocInternals.xml within <Bookmarks></Bookmarks> tags.
+Bookmarks | Yes | Yes | Stored in DocInternals.xml
 Field Event Triggers | Yes | Yes | Stored in AllProperties.xml
 Variable Event Triggers | Yes | Yes | Stored in AllProperties.xml
 Document Event Triggers | Yes | Yes | Stored in DocProperties.xml
