@@ -126,15 +126,21 @@ Doing this without worrying about reloading saves having to worry about dependen
 
 ## Qlikview Features Supported
 
- Feature | Captured by PRJ | Captured by .nd.qvw  
- ----- |:-----:| :-----:
- Load Script | x | x
- Layout | x | x
- Variables | ? | ?
- Field Event Triggers | ? | ?
- Variable Event Triggers | ? | ?
- Document Event Triggers | ? | ?
+ Feature | Captured by PRJ | Captured by .nd.qvw | Comments
+ ----- |:-----:| :-----:|:-----
+ Load Script | Yes | Yes |
+ Layout | Yes | Yes |
+ Variables | ? | ? |
+ Field Event Triggers | ? | ? |
+ Variable Event Triggers | ? | ? |
+ Document Event Triggers | ? | ? |
+ Selection State | No  | No | Not stored in prj loses data (and therefore selections within).
+ Bookmarks | ? | ? | 
  
+ ## PRJ Files with Uninteresting Diffs
  
+ Not all of the files in the PRJ folder yeild interesting diffs when inspected. Whilst we still want to track these they aren't too look at when reviewing code:
  
+  * DocInternals.xml
+  * AllProperties.xml
  
