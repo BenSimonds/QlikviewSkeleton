@@ -130,17 +130,12 @@ Doing this without worrying about reloading saves having to worry about dependen
  ----- |:-----:| :-----:|:-----
  Load Script | Yes | Yes |
  Layout | Yes | Yes |
- Variables | ? | ? |
- Field Event Triggers | ? | ? |
- Variable Event Triggers | ? | ? |
- Document Event Triggers | ? | ? |
- Selection State | No  | No | Not stored in prj loses data (and therefore selections within).
- Bookmarks | ? | ? | 
+ Variables | Yes | Yes |
+ Field Event Triggers | Yes | Yes | Stored in AllProperties.xml
+ Variable Event Triggers | Yes | Yes | Stored in AllProperties.xml
+ Document Event Triggers | Yes | Yes | Stored in DocProperties.xml
+ Selection State | *No*  | *No* | Not stored in prj, .nd.qvw loses data (and therefore selections within).
+ Bookmarks | Y | Y | Stored in DocInternals.xml within <Bookmarks></Bookmarks> tags.
  
- ## PRJ Files with Uninteresting Diffs
- 
- Not all of the files in the PRJ folder yeild interesting diffs when inspected. Whilst we still want to track these they aren't too look at when reviewing code:
- 
-  * DocInternals.xml
-  * AllProperties.xml
+
  
