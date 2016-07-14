@@ -21,6 +21,9 @@ Log.txt
 # Temp Files
 *.tmp
 
+# Diff files.
+*.diff
+
 
 #### Standard windows gitignore, from https://github.com/github/gitignore
 # Windows image file caches
