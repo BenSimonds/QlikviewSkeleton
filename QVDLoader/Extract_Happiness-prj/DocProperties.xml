@@ -859,7 +859,7 @@
     </CalendarStrings>
   </LocaleInfo>
   <HasWorkingDirectory>true</HasWorkingDirectory>
-  <IsPurged>true</IsPurged>
+  <IsPurged>false</IsPurged>
   <Contact></Contact>
   <TimerPollInterval>1</TimerPollInterval>
   <BookmarkSortOrder>

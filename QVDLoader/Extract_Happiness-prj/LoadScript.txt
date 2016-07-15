@@ -27,4 +27,4 @@ FROM
 [http://en.wikipedia.org/wiki/World_Happiness_Report]
 (html, codepage is 1252, embedded labels, table is @2);
 
-Store Happiness into ../Happiness.qvd (qvd);
+Store Happiness into ../QVD/Happiness.qvd (qvd);
