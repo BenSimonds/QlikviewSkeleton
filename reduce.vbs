@@ -1,4 +1,3 @@
-
 ' This script loops through the App and QVDLoader Folders and converts any QVWs to reduced ones. 
 ' Currently it isn't recursive. Logs to reduce.vbs.log
 
@@ -16,8 +15,6 @@ Set QVWPaths = CreateObject("Scripting.Dictionary")
 QVWPaths.Add objFSO.GetFolder(WorkingDir & "\App"), ""
 QVWPaths.Add objFSO.GetFolder(WorkingDir & "\QVDLoader"), ""
 'ADD OTHER FOLDERS TO BE SEARCHED HERE'
-
-
 
 'Loop through folders'
 mylog.WriteLine Now & " Looping through Folders"
