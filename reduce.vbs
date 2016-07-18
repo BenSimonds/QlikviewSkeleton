@@ -56,7 +56,8 @@ Sub ReduceData(QVW)
 		MyDoc.SaveAs(QVW)				'Saves the doc.'
 	End If
 	set docProp = Nothing
-
+	mylog.WriteLine Now & " 	...Found file with generate logfile turned off. Turned on and re-saved."
+	
 	'Test prj folder exists:'
 	If not objFSO.FolderExists(PRJFolder) Then
 		mylog.WriteLine Now & "PRJ  folder not found for " & BaseName
