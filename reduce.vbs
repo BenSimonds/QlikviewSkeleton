@@ -49,10 +49,10 @@ Sub ReduceData(QVW)
 	mylog.WriteLine Now & " 	...File Opened."
 	
 	'I hate it when generate logfile isn't turned on, so here I make sure it's done for every file.
-	set docprop = MyDoc.GetProperties 		'Creates a properties object'
-	If not docprop.GenerateLogfile:
-		docprop.GenerateLogfile = true 			'Sets GenerateLogfile to true'
-		MyDoc.SetProperties docprop 			'Sets DocProperties to our modified object.'
+	set docProp = MyDoc.GetProperties 		'Creates a properties object'
+	If not docProp.GenerateLogfile:
+		docProp.GenerateLogfile = true 			'Sets GenerateLogfile to true'
+		MyDoc.SetProperties docProp 			'Sets DocProperties to our modified object.'
 		MyDoc.SaveAs(QVW)				'Saves the doc.'
 	End If
 	set docProp = Nothing
