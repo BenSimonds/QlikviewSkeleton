@@ -50,7 +50,7 @@ Sub ReduceData(QVW)
 	
 	'I hate it when generate logfile isn't turned on, so here I make sure it's done for every file.
 	set docProp = MyDoc.GetProperties 		'Creates a properties object'
-	If not docProp.GenerateLogfile:
+	If not docProp.GenerateLogfile Then
 		docProp.GenerateLogfile = true 			'Sets GenerateLogfile to true'
 		MyDoc.SetProperties docProp 			'Sets DocProperties to our modified object.'
 		MyDoc.SaveAs(QVW)				'Saves the doc.'
