@@ -47,7 +47,17 @@ Sub ReduceData(QVW)
 	Set MyApp = CreateObject("QlikTech.QlikView")
 	Set MyDoc = MyApp.OpenDoc(QVW,"","")
 	mylog.WriteLine Now & " 	...File Opened."
-
+	
+	'I hate it when generate logfile isn't turned on, so here I make sure it's done for every file.
+	set docProp = MyDoc.GetProperties 		'Creates a properties object'
+	If not docProp.GenerateLogfile Then
+		docProp.GenerateLogfile = true 			'Sets GenerateLogfile to true'
+		MyDoc.SetProperties docProp 			'Sets DocProperties to our modified object.'
+		MyDoc.SaveAs(QVW)				'Saves the doc.'
+	End If
+	set docProp = Nothing
+	mylog.WriteLine Now & " 	...Found file with generate logfile turned off. Turned on and re-saved."
+	
 	'Test prj folder exists:'
 	If not objFSO.FolderExists(PRJFolder) Then
 		mylog.WriteLine Now & "PRJ  folder not found for " & BaseName
