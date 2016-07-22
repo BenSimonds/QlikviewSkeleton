@@ -29,7 +29,7 @@ This method captures the most important parts of a project in text format, but i
 
 ### Option 3: -prj Folders
 
-Prj Folders are Qliks way of trying to make version control in Qlik more achievable, and whilst not officially supported by Qlik, offer probably the best way to implement version control with Git in Qlik. Once a PRJ folder for a qvw is created (by creating a folder with the name [QVW_NAME]-prj within the same directory as the qvw), qlik will populate this folder with the data neccessary to re-create the qvw in text format, including the load script, layout, and variables. Population of the prj folder is automatic upon saving the qvw, and any changes to the prj folder to the prj folder will be applied to the qvw when it is opened. It is worth noting that the prj folder is _not_ the project itself, the qvw still contains all everything it needs to function without the prj folder and can be migrated to another directory independently. Rather, the prj folder is applied on top of the qvw on opening to update it with any changes.
+Prj Folders are Qliks way of trying to make version control in Qlik more achievable, and whilst not officially supported by Qlik, offer probably the best way to implement version control with Git in Qlik. Once a PRJ folder for a qvw is created (by creating a folder with the name [QVW\_NAME]-prj within the same directory as the qvw), qlik will populate this folder with the data neccessary to re-create the qvw in text format, including the load script, layout, and variables. Population of the prj folder is automatic upon saving the qvw, and any changes to the prj folder to the prj folder will be applied to the qvw when it is opened. It is worth noting that the prj folder is _not_ the project itself, the qvw still contains all everything it needs to function without the prj folder and can be migrated to another directory independently. Rather, the prj folder is applied on top of the qvw on opening to update it with any changes.
 
 The prj folder does have some limitations:
 * It is not officially supported by qlik. If it breaks your project, you are on your own.
@@ -44,6 +44,7 @@ The approach I'm currently favouring is a combined one that mainly uses the prj 
 The directory structure I've chosen is based on my normal non-version controlled folder structure. I've assumed a two-tier application structre here with one or more extract/transform layers saving data to a QVD folder, which is then loaded into the front end applciation.
 
 ```
+
 Project (root of git repo)
   |---- StaticFiles (Non-qvd source data goes here if it needs to be stored with the application. Excel files, CSVs etc.)
   |---- QVD (QVD Files go here, front end application should only load from this directory)
@@ -58,7 +59,8 @@ Project (root of git repo)
   |       |---- MyApp-prj (And contents)
   |
   |---- .gitignore
-  |---- ...any other files - docs, 
+  |---- ...any other files - docs
+
 ``` 
 
 ## .gitignore
@@ -141,5 +143,8 @@ Variable Event Triggers | Yes | Yes | Stored in AllProperties.xml
 Document Event Triggers | Yes | Yes | Stored in DocProperties.xml
 Selection State | *No*  | *No* | Not stored in prj, .nd.qvw loses data (and therefore selections within).
  
+## Branching Model
+
+The branching model you adopt has a significant impact on how you manage your project and your repository. There are several well known branching models, two key ones being [git-flow](http://nvie.com/posts/a-successful-git-branching-model/) and [GitHub Flow](https://guides.github.com/introduction/flow/). I haven't used either in anger, so I don't have a strong opinion yet on which is best to use, but I'm inclined towards the relative simplicity of GitHub Flow. In the GitHub Flow model you create a branch for each feature or fix you work on, then commit this back to master once you've finished implementing and testing this. This has the advantage of always keeping `master` in a deployable state. It also requires you to manage fewer branches than git-flow and provides a easy way to do code review if you're using a tool like GitHub or Bibucket (via putting in a pull request to merge your branch).
 
  
