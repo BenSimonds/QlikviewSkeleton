@@ -98,7 +98,11 @@ Snippet of load script
 ```
 `Locals.qvs` is then added to gitignore.
 
-## Data Reduction:
+## Scripts:
+
+I've started working on some useful scripts to help with maintaining the project through different processes, namely data reduction (pre-commit) and qvw generation (after cloning/pulling when no actual qvw's exist).
+
+### Data Reduction: `reduce.vbs`
 
 Whilst Qlik has a command line flag to open a qvw without data, it does not have one that saves the qvw in this state. This means we will have to find a different way to save a reduced qvw. Whilst I generally try and avoid vb script, it does solve this problem - see `reduce.vbs` for how. The script loops through the App and QVDLoader files, and opens each qvw in turn, then does the following:
 
@@ -110,7 +114,7 @@ The script thus takes care of two concerns, firstly making sure that prj folders
 
 > Note: In future I'd like to make this step part of a pre-commit hook, so that it can be run automatically before each commit. For now the user must run it themselves.
 
-## QVW Generation
+### QVW Generation: `build.vbs`
 
 Once we've made commits to our project and pushed them to a repository, and then cloned that repository somewhere else, we also need to run the data reduction process in reverse. Since none of our actual qvw files are copied across (just stripped .nd.qvw files). We need to re-generate them when we clone the repository. This can be split into two parts:
   
