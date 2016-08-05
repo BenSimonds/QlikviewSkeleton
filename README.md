@@ -147,4 +147,25 @@ Selection State | *No*  | *No* | Not stored in prj, .nd.qvw loses data (and ther
 
 The branching model you adopt has a significant impact on how you manage your project and your repository. There are several well known branching models, two key ones being [git-flow](http://nvie.com/posts/a-successful-git-branching-model/) and [GitHub Flow](https://guides.github.com/introduction/flow/). I haven't used either in anger, so I don't have a strong opinion yet on which is best to use, but I'm inclined towards the relative simplicity of GitHub Flow. In the GitHub Flow model you create a branch for each feature or fix you work on, then commit this back to master once you've finished implementing and testing this. This has the advantage of always keeping `master` in a deployable state. It also requires you to manage fewer branches than git-flow and provides a easy way to do code review if you're using a tool like GitHub or Bibucket (via putting in a pull request to merge your branch).
 
+## Merge Conflicts
+
+Because XML content can be difficult to diff intelligently, git can sometimes give us misleading conflicts. Consider the following diff:
  
+ ```diff
+ @@ -100,11 +100,11 @@
+           <ZedLevel>0</ZedLevel>
+         </PrjFrameParentDef>
+         <PrjFrameParentDef>
+-          <ObjectId>Document\CH04_131517295</ObjectId>
++          <ObjectId>Document\CH02_985394347</ObjectId>
+           <Rect>
+-            <Left>1938</Left>
+-            <Top>1322</Top>
+-            <Width>934</Width>
++            <Left>1016</Left>
++            <Top>1175</Top>
++            <Width>769</Width>
+             <Height>900</Height>
+           </Rect>
+           <MinimizedRect>
+ ```
