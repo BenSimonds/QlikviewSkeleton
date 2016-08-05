@@ -197,25 +197,7 @@
   <SaveAsPrim>false</SaveAsPrim>
   <WasSavedAsPrim>false</WasSavedAsPrim>
   <MyFileType>1729</MyFileType>
-  <UserPermissions>
-    <ReduceData>true</ReduceData>
-    <AddSheet>true</AddSheet>
-    <EditScript>true</EditScript>
-    <Reload>true</Reload>
-    <PartialReload>true</PartialReload>
-    <EditModule>true</EditModule>
-    <SaveApp>true</SaveApp>
-    <AccessAppProperties>true</AccessAppProperties>
-    <MacroOverride>false</MacroOverride>
-    <PromoteDemoteSheets>true</PromoteDemoteSheets>
-    <AllowExport>true</AllowExport>
-    <AccessTabRowProperties>true</AccessTabRowProperties>
-    <ShowAllSheetsAndObjects>true</ShowAllSheetsAndObjects>
-    <AdminSecurityOverride>false</AdminSecurityOverride>
-    <AllowPrintAnyway>false</AllowPrintAnyway>
-    <DisplayHiddenProgress>false</DisplayHiddenProgress>
-    <InhibitUserReload>false</InhibitUserReload>
-  </UserPermissions>
+  <UserPermissions></UserPermissions>
   <SelectionStyle>SS_CLASSIC</SelectionStyle>
   <SelectionColors>6</SelectionColors>
   <WallpaperPic enctype="base64"></WallpaperPic>

@@ -19,6 +19,9 @@ QVWPaths.Add objFSO.GetFolder(WorkingDir & "\QVDLoader"), ""
 'Loop through folders'
 mylog.WriteLine Now & " Looping through Folders"
 
+'Open Qlikview'
+Set MyApp = CreateObject("QlikTech.QlikView")
+
 For Each QVWPath in QVWPaths.Keys()
 	mylog.WriteLine Now & " Searching in: " & QVWPath
 
@@ -28,9 +31,13 @@ For Each QVWPath in QVWPaths.Keys()
 			ReduceData QVWFile
 		End If
 	Next
-	
- Next
+Next
 
+'Quit'
+MyApp.Quit
+Set MyDoc = Nothing
+Set MyApp = Nothing
+mylog.WriteLine Now & " 	...Vars Dropped."
 
 mylog.WriteLine Now & " Finished!"
 
@@ -44,7 +51,6 @@ Sub ReduceData(QVW)
 	mylog.WriteLine Now & " Creating No Data File: " & QVW & " >> " & Target
 
 	'Open File in Qlik'
-	Set MyApp = CreateObject("QlikTech.QlikView")
 	Set MyDoc = MyApp.OpenDoc(QVW,"","")
 	mylog.WriteLine Now & " 	...File Opened."
 	
@@ -85,15 +91,6 @@ Sub ReduceData(QVW)
 	
 	MyDoc.SaveAs(Target)
 	mylog.WriteLine Now & " 	...File Saved."
-
-	WScript.Sleep(1000) 'Qlikview thinks it has crashed if it closes too quickly...'
-	MyDoc.GetApplication.Quit
-	mylog.WriteLine Now & " 	...App Quit."
-
-	'Quit'
-	Set MyDoc = Nothing
-	Set MyApp = Nothing
-	mylog.WriteLine Now & " 	...Vars Dropped."
-
+	
 END SUB
 

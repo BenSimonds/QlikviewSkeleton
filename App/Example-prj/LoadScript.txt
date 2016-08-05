@@ -1,0 +1,28 @@
+﻿///$tab Main
+SET ThousandSep=',';
+SET DecimalSep='.';
+SET MoneyThousandSep=',';
+SET MoneyDecimalSep='.';
+SET MoneyFormat='£#,##0.00;-£#,##0.00';
+SET TimeFormat='hh:mm:ss';
+SET DateFormat='DD/MM/YYYY';
+SET TimestampFormat='DD/MM/YYYY hh:mm:ss[.fff]';
+SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
+
+//---- Import locals and  globals. ----//
+
+
+//---- Load Example Data ----//
+// Here I'm loading some data about happiness in different countries scraped from Wikipedia.
+
+Happiness:
+LOAD 
+	Happiness_Rank 						as [Rank]
+,	Happiness_Country 					as [Country]
+,	Happiness_Score 					as [Score]
+,	Happiness_ChangeOverPreviousYear	as [Change Over Previous Year]
+FROM
+[..\QVD\Happiness.qvd]
+(qvd);
+

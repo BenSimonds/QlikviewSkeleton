@@ -170,6 +170,5 @@ Because XML content can be difficult to diff intelligently, git can sometimes gi
            <MinimizedRect>
  ```
 The minimal change here would be to pick either CH04 or CH02, however what's really happened here is that two individual objects have been added. The correct resolution for this would be to duplictate that xml node - once for each object.
-```
 
-```
+
